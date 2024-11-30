@@ -1,0 +1,33 @@
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
+
+[project]
+requires-python = ">=3.9"
+name = "kedro_logfire_example"
+readme = "README.md"
+dynamic = [ "version",]
+dependencies = [ "ipython>=8.10", "jupyterlab>=3.0", "notebook", "kedro~=0.19.8", "kedro[jupyter]", "kedro-datasets[pandas-csvdataset, pandas-exceldataset, pandas-parquetdataset]>=3.0", "kedro-viz>=6.7.0", "scikit-learn~=1.5.1",]
+
+[project.scripts]
+kedro-logfire-example = "kedro_logfire_example.__main__:main"
+
+[tool.kedro]
+package_name = "kedro_logfire_example"
+project_name = "kedro-logfire-example"
+kedro_init_version = "0.19.8"
+tools = "['Custom Logging']"
+example_pipeline = "True"
+source_dir = "src"
+
+[project.entry-points."kedro.hooks"]
+
+[tool.setuptools.dynamic.version]
+attr = "kedro_logfire_example.__version__"
+
+[tool.setuptools.packages.find]
+where = [ "src",]
+namespaces = false
+
+[tool.kedro_telemetry]
+project_id = "1447294e5d474980a0bb4834238755dc"
